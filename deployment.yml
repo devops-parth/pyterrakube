@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "pyjen-app"
+spec:
+  selector:
+    matchLabels:
+      app: "ppd"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "ppd"
+    spec:
+      containers:
+        - image: devopsparth/pyjen_app
+          imagePullPolicy: Always
+          name: "ppd"
+          ports:
+            - containerPort: 80
+              protocol: TCP
