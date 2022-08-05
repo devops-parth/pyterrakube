@@ -5,7 +5,7 @@ resource "aws_instance" "myec2" {
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
   key_name               = "Jenkins"
   tags = {
-    name = "minikube_instance"
+    name = "kube_inst"
   user_data = <<-EOF
     #!/bin/bash
     sudo apt update -y
