@@ -4,9 +4,7 @@ resource "aws_instance" "myec2" {
   availability_zone      = "us-east-1a"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
   key_name               = "Jenkins"
-  tags = {
-    name = "kube_inst"
-  user_data = <<-EOF
+    user_data = <<-EOF
     #!/bin/bash
     sudo apt update -y
     sudo apt install docker.io -y
@@ -20,5 +18,7 @@ resource "aws_instance" "myec2" {
     sudo minikube start",
     kubectl apply -f ./deployment.yml -f ./service.yml"
   EOF
+  tags = {
+    name = "kube_inst"
   }
 }
