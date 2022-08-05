@@ -15,18 +15,18 @@ resource "aws_instance" "myec2" {
       "sudo wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64",
       "sudo chmod +x /home/ubuntu/minikube-linux-amd64",
       "sudo cp minikube-linux-amd64 /usr/local/bin/minikube",
-      "curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl",
+      "curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/releas>",
       "sudo chmod +x /home/ubuntu/kubectl",
       "sudo cp kubectl /usr/local/bin/kubectl",
-      "sudo usermod -aG docker ubuntu"
-      "sudo minikube start"
+      "sudo usermod -aG docker ubuntu",
+      "sudo minikube start",
       "kubectl apply -f ./deployment.yml -f ./service.yml"
     ]
     connection {
       type        = "ssh"
       host        = self.public_ip
       user        = "ubuntu"
-      private_key = file("/home/ubuntu/jenkins.pem")
+      private_key = file("/home/ubuntu/Jenkins.pem")
     }
   }
 }
