@@ -19,6 +19,7 @@ resource "aws_instance" "myec2" {
     sudo apt install git -y
     git clone https://github.com/devops-parth/pyterrakube.git
     sudo apt-get update
+    cd pyterrakube/
     kubectl apply -f deployment.yml
     kubectl apply -f service.yml
   EOF
