@@ -6,10 +6,10 @@ resource "aws_instance" "myec2" {
   key_name               = "Jenkins"
   user_data = <<-EOF
     #!/bin/bash
-    sudo apt update
-    sudo apt install apt-transport-https
-    sudo apt upgrade
-    sudo apt install virtualbox virtualbox-ext-pack
+    sudo apt update -y
+    sudo apt install apt-transport-https -y
+    sudo apt upgrade -y
+    sudo apt install virtualbox virtualbox-ext-pack -y
     wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     chmod +x minikube-linux-amd64
     sudo mv minikube-linux-amd64 /usr/local/bin/minikube
@@ -17,8 +17,9 @@ resource "aws_instance" "myec2" {
     chmod +x ./kubectl
     minikube start
     sudo apt install git -y
+    git init
     git clone https://github.com/devops-parth/pyterrakube.git
-    sudo apt-get update
+    sudo apt-get update -y
     cd pyterrakube/
     kubectl apply -f deployment.yml
     kubectl apply -f service.yml
