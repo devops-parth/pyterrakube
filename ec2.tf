@@ -19,6 +19,8 @@ resource "aws_instance" "myec2" {
       "sudo chmod +x /home/ubuntu/kubectl",
       "sudo cp kubectl /usr/local/bin/kubectl",
       "sudo usermod -aG docker ubuntu"
+      "sudo minikube start"
+      "kubectl apply -f ./deployment.yml -f ./service.yml"
     ]
     connection {
       type        = "ssh"
