@@ -13,7 +13,7 @@ spec:
         app: "ppd"
     spec:
       containers:
-        - image: devopsparth/pyjen_app
+        - image: devopsparth/navtest
           imagePullPolicy: Always
           name: "ppd"
           ports:
