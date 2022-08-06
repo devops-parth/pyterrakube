@@ -3,7 +3,7 @@ resource "aws_instance" "myec2" {
   instance_type          = "t2.medium"
   availability_zone      = "us-east-1a"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-  key_name               = "Jenkins"
+  key_name               = "Jenkin"
   user_data = <<-EOF
     #!/bin/bash
     sudo apt update -y
@@ -18,6 +18,7 @@ resource "aws_instance" "myec2" {
     sudo chmod +x /home/ubuntu/kubectl
     sudo cp kubectl /usr/local/bin/kubectl
     sudo usermod -aG docker ubuntu
+    sudo minikube config set vm-driver none
     minikube start
     sudo apt install git -y
     git init
